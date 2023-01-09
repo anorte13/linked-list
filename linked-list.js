@@ -34,16 +34,40 @@ class LinkedList {
   printSize() {
     return console.log("The amount of elements in the list: " + this.size);
   }
-  //returns the first node element in the list
+  //returns the first node in the list
   printHead() {
     return console.log(`The head of the linked list is ${this.head.value}`);
   }
+  // returns the last node in the list
   printTail() {
     let tail = this.head;
     while (tail.next !== null) {
       tail = tail.next;
     }
     console.log("The tail of the linked list is: " + tail.value);
+  }
+  at(index) {
+    let current = this.head;
+    let currentPosition = 0;
+    while (current) {
+      if (currentPosition === index) {
+        console.log("The node at index " + index + " is " + current.value);
+      }
+      current = current.next;
+      currentPosition++;
+    }
+    return null;
+  }
+  pop() {
+    let pointer = this.head;
+    let previous;
+    while (pointer.next !== null) {
+      previous = pointer;
+      pointer = pointer.next;
+    }
+    previous.next = null;
+    this.size--;
+    console.log("The last node in list is now deleted");
   }
 }
 const list = new LinkedList();
@@ -54,3 +78,6 @@ list.prepend(12);
 list.printSize();
 list.printHead();
 list.printTail();
+list.at(3);
+list.pop();
+list.printSize();
