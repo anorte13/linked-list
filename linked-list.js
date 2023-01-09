@@ -38,11 +38,19 @@ class LinkedList {
   printHead() {
     return console.log(`The head of the linked list is ${this.head.value}`);
   }
+  printTail() {
+    let tail = this.head;
+    while (tail.next !== null) {
+      tail = tail.next;
+    }
+    console.log("The tail of the linked list is: " + tail.value);
+  }
 }
 const list = new LinkedList();
 list.append(5);
 list.append(6);
-list.prepend(12);
 list.append(2);
+list.prepend(12);
 list.printSize();
 list.printHead();
+list.printTail();
