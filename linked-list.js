@@ -36,20 +36,13 @@ class LinkedList {
   }
   //returns the first node element in the list
   printHead() {
-    return console.log("The head of the linked list is: " + this.head);
-  }
-  printTail() {}
-  containsValue(value) {
-    if (head === null) {
-      return false;
-    } else {
-      while (this.head != value) {}
-    }
+    return console.log(`The head of the linked list is ${this.head.value}`);
   }
 }
 const list = new LinkedList();
 list.append(5);
 list.append(6);
-list.prepend(10);
+list.prepend(12);
+list.append(2);
 list.printSize();
 list.printHead();
