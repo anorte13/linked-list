@@ -46,18 +46,21 @@ class LinkedList {
     }
     console.log("The tail of the linked list is: " + tail.value);
   }
+  //returns the value of the node at the given index
   at(index) {
     let current = this.head;
     let currentPosition = 0;
     while (current) {
       if (currentPosition === index) {
         console.log("The node at index " + index + " is " + current.value);
+        return;
       }
       current = current.next;
       currentPosition++;
     }
-    return null;
+    return console.log("No element was found at index " + index);
   }
+  //removes the last node in the list and sets it to null
   pop() {
     let pointer = this.head;
     let previous;
@@ -69,9 +72,44 @@ class LinkedList {
     this.size--;
     console.log("The last node in list is now deleted");
   }
+  //check the list to see whether the value exists in the list
+  contains(value) {
+    let current = this.head;
+    while (current) {
+      if (current.value === value) {
+        console.log("The value was found in the list");
+        return;
+      }
+      current = current.next;
+    }
+    return console.log("The value was not found");
+  }
+  //checks the linked list to find a value and their current index
+  find(value) {
+    let current = this.head;
+    let currentPosition = 0;
+    while (current) {
+      if (current.value === value) {
+        console.log("The value was found at index " + currentPosition);
+        return;
+      }
+      current = current.next;
+      currentPosition++;
+    }
+    return console.log("The value " + value + " was not found at any index");
+  }
+  //converts the node elements to strings
+  toString() {
+    let current = this.head;
+    while (current) {
+      console.log(current.value.toString());
+      current = current.next;
+    }
+  }
 }
 const list = new LinkedList();
 list.append(5);
+list.append(100);
 list.append(6);
 list.append(2);
 list.prepend(12);
@@ -81,3 +119,6 @@ list.printTail();
 list.at(3);
 list.pop();
 list.printSize();
+list.contains(5);
+list.find(6);
+list.toString();
